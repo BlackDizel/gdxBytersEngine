@@ -13,16 +13,16 @@ Simple game engine for libgdx
 
 3. Navigate to project dir
 4. Run
-```
+```sh
 git init
 git submodule add https://github.com/BlackDizel/gdxBytersEngine coreEngine
 ```
 5. In project `settings.gradle` file add `coreEngine` module link like
-```
+```groovy
 include 'desktop', 'core', 'coreEngine'
 ```
 6. In project `build.gradle` add link to coreEngine module in `core` section
-```
+```groovy
 project(":core") {
     apply plugin: "java"
 
@@ -34,8 +34,7 @@ project(":core") {
 ```
 7. Run gradle sync _(in IdeaJ 2016.3 right gradle panel, sync button)_.
 8. In `core` module replace `Core.java` class content like
-```
-
+```java
 public class Core extends ApplicationAdapter {
 
 	@Override
@@ -70,6 +69,5 @@ public class Core extends ApplicationAdapter {
 	}
 
 }
-
 ```
 9. If you use IdeaJ, setup [environment](https://github.com/libgdx/libgdx/wiki/Gradle-and-Intellij-IDEA)
