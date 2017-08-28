@@ -1,8 +1,16 @@
 # gdxBytersEngine
-game engine for libgdx
+Simple game engine for libgdx 
+## Features
+- screens navigation
+- dialog system
+- menus
+- camera
 ## Installation (v0.1)
 1. Download [libgdx installer app](https://libgdx.badlogicgames.com/download.html)
-2. Create project 
+2. Create project
+
+![setup app gui exmaple](/img/libgdx-setup.png)
+
 3. Navigate to project dir
 4. Run
 ```
@@ -64,3 +72,4 @@ public class Core extends ApplicationAdapter {
 }
 
 ```
+9. If you use IdeaJ, setup [environment](https://github.com/libgdx/libgdx/wiki/Gradle-and-Intellij-IDEA)
