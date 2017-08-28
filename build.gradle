@@ -1,0 +1,23 @@
+apply plugin: 'java'
+
+sourceCompatibility = 1.6
+sourceSets.main.java.srcDirs = ["src/"]
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    dependencies {
+        compile "com.badlogicgames.gdx:gdx:$gdxVersion"
+    }
+}
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.5
+
+repositories {
+    mavenCentral()
+}
