@@ -1,5 +1,7 @@
 # gdxBytersEngine
 Simple game engine for libgdx 
+
+[![](https://jitpack.io/v/BlackDizel/gdxBytersEngine.svg)](https://jitpack.io/#BlackDizel/gdxBytersEngine)
 ## Features
 - screens navigation
 - dialog system
@@ -11,29 +13,18 @@ Simple game engine for libgdx
 
 ![setup app gui exmaple](/img/libgdx-setup.png)
 
-3. Navigate to project dir
-4. Run
-```sh
-git init
-git submodule add https://github.com/BlackDizel/gdxBytersEngine coreEngine
-```
-5. In project `settings.gradle` file add `coreEngine` module link like
-```groovy
-include 'desktop', 'core', 'coreEngine'
-```
-6. In project `build.gradle` add link to coreEngine module in `core` section
-```groovy
-project(":core") {
-    apply plugin: "java"
-
-    dependencies {
-        compile project(':coreEngine')
-        compile "com.badlogicgames.gdx:gdx:$gdxVersion"
-    }
+3. Add library to gradle dependencies (We use [jitpack.io](https://jitpack.io/))
+```gradle
+repositories { 
+	jcenter()
+		maven { url "https://jitpack.io" }
+	}
+dependencies {
+	compile 'com.github.BlackDizel:gdxBytersEngine:0.2'
 }
-```
-7. Run gradle sync _(in IdeaJ 2016.3 right gradle panel, sync button)_.
-8. In `core` module replace `Core.java` class content like
+```  
+4. Run gradle sync _(in IdeaJ 2016.3 right gradle panel, sync button)_.
+5. In `core` module replace `Core.java` class content like
 ```java
 public class Core extends ApplicationAdapter {
 
@@ -70,4 +61,4 @@ public class Core extends ApplicationAdapter {
 
 }
 ```
-9. If you use IdeaJ, setup [environment](https://github.com/libgdx/libgdx/wiki/Gradle-and-Intellij-IDEA)
+6. If you use IdeaJ, setup [environment](https://github.com/libgdx/libgdx/wiki/Gradle-and-Intellij-IDEA)
