@@ -16,8 +16,7 @@ Simple game engine for libgdx
 3. Add library to gradle dependencies (We use [jitpack.io](https://jitpack.io/))
 ```gradle
 repositories { 
-	jcenter()
-		maven { url "https://jitpack.io" }
+	maven { url "https://jitpack.io" }
 	}
 dependencies {
 	compile 'com.github.BlackDizel:gdxBytersEngine:0.2'
