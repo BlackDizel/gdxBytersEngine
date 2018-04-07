@@ -50,4 +50,8 @@ public class ControllerResources {
     public void drawEnd() {
         batch.end();
     }
+
+    public SpriteBatch getSpriteBatch() {
+        return batch;
+    }
 }
