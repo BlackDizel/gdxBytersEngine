@@ -26,6 +26,7 @@ public class ControllerResources {
     }
 
     public void onDisposeResources(IScreen screen) {
+        if (screen == null) return;
         screen.dispose();
     }
 
