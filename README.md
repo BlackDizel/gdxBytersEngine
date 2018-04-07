@@ -19,17 +19,20 @@ repositories {
 	maven { url "https://jitpack.io" }
 	}
 dependencies {
-	compile 'com.github.BlackDizel:gdxBytersEngine:0.2'
+	compile 'com.github.BlackDizel:gdxBytersEngine:0.4'
 }
 ```  
 4. Run gradle sync _(in IdeaJ 2016.3 right gradle panel, sync button)_.
 5. In `core` module replace `Core.java` class content like
 ```java
 public class Core extends ApplicationAdapter {
+	
+	private Engine engine;
 
 	@Override
 	public void create () {
-		Engine.getInstance().create(new ScreenMenu());
+		engine = new Engine();
+        	engine.create(new ScreenGame());
 		setColorClear();
 	}
 
@@ -40,18 +43,18 @@ public class Core extends ApplicationAdapter {
 		colorClear.g = 0.1f;
 		colorClear.b = 0.1f;
 		colorClear.a = 1f;
-		Engine.getInstance().setColorClear(colorClear);
+		engine.setColorClear(colorClear);
 	}
 
 
 	@Override
 	public void render () {
-		Engine.getInstance().render();
+		engine.render();
 	}
 	
 	@Override
 	public void dispose () {
-		Engine.getInstance().dispose();
+		engine.dispose();
 	}
 
 	public void resize(int width, int height) {
