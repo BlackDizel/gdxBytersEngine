@@ -24,10 +24,9 @@ public class Engine {
         injector.getControllerResources().setColorClear(colorClear);
     }
 
-    public void create(IScreen screen) {
+    public void create() {
         injector.getControllerResources().init();
         injector.getControllerCamera().load();
-        injector.getNavigator().navigateScreen(screen);
     }
 
     private void input() {
