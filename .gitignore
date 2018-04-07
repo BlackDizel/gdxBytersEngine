@@ -3,3 +3,4 @@
 build/
 coreEngine.iml
 
+/.gradle/

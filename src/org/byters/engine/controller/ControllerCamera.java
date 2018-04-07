@@ -7,15 +7,10 @@ import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector3;
 
 public class ControllerCamera {
-    private static ControllerCamera instance;
 
     private OrthographicCamera camera;
     private Vector3 originPosition;
 
-    public static ControllerCamera getInstance() {
-        if (instance == null) instance = new ControllerCamera();
-        return instance;
-    }
 
     public void load() {
         camera = new OrthographicCamera();

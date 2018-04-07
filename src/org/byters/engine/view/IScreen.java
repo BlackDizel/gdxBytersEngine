@@ -3,9 +3,10 @@ package org.byters.engine.view;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public interface IScreen {
-    void draw(SpriteBatch batch);
 
-    void load(SpriteBatch batch);
+    void draw();
+
+    void load();
 
     void update();
 

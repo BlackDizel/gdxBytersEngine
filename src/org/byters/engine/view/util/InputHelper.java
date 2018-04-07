@@ -4,15 +4,28 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import org.byters.engine.controller.ControllerCamera;
 
+import java.lang.ref.WeakReference;
+
 public class InputHelper {
 
-    public static boolean isContainsPointer(Texture texture, float x, float y) {
+    private WeakReference<ControllerCamera> refControllerCamera;
+
+    public InputHelper(ControllerCamera controllerCamera) {
+        this.refControllerCamera = new WeakReference<>(controllerCamera);
+    }
+
+    public boolean isContainsPointer(Texture texture, float x, float y) {
         return isContainsPointer(x, y, texture.getWidth(), texture.getHeight());
     }
 
-    public static boolean isContainsPointer(float x, float y, float width, float height) {
-        float xPoint = Gdx.input.getX() / (Gdx.graphics.getWidth() / (float) ControllerCamera.getInstance().getCameraWidth());
-        float yPoint = (Gdx.graphics.getHeight() - Gdx.input.getY()) / (Gdx.graphics.getHeight() / (float) ControllerCamera.getInstance().getCameraHeight());
+    public boolean isContainsPointer(float x, float y, float width, float height) {
+
+        if (refControllerCamera == null || refControllerCamera.get() == null) return false;
+
+        float xPoint = Gdx.input.getX() / (Gdx.graphics.getWidth() / (float) refControllerCamera.get().getCameraWidth());
+        float yPoint = (Gdx.graphics.getHeight() - Gdx.input.getY())
+                / (Gdx.graphics.getHeight() / (float) refControllerCamera.get().getCameraHeight());
+
         return x < xPoint
                 && xPoint < x + width
                 && y < yPoint
