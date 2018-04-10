@@ -8,17 +8,28 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 
 public class DebugDraw {
-    private static DebugDraw instance;
-    private final ShapeRenderer renderer;
 
-    private DebugDraw() {
+    private boolean isDebug = false;
+    private ShapeRenderer renderer;
+
+    public DebugDraw() {
+    }
+
+    public boolean isDebug() {
+        return isDebug;
+    }
+
+    public void setDebug(boolean isDebug) {
+        this.isDebug = isDebug;
+    }
+
+    public void load() {
         renderer = new ShapeRenderer();
         renderer.setAutoShapeType(true);
     }
 
-    public static DebugDraw getInstance() {
-        if (instance == null) instance = new DebugDraw();
-        return instance;
+    public void dispose() {
+        renderer.dispose();
     }
 
     public void draw(Polygon polygon) {

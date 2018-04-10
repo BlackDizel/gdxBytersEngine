@@ -3,17 +3,23 @@ package org.byters.engine;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
-import org.byters.engine.controller.ControllerMain;
 import org.byters.engine.controller.Injector;
-import org.byters.engine.view.DebugDraw;
 import org.byters.engine.view.IScreen;
 
 public class Engine {
+
+    //fixme now data stored with logic in controllers.
+    //fixme need to split controllers to data and presenter classes
 
     private Injector injector;
 
     public Engine() {
         injector = new Injector();
+    }
+
+    public Engine(boolean isDebug) {
+        this();
+        injector.getDebugDraw().setDebug(isDebug);
     }
 
     public Injector getInjector() {
@@ -24,9 +30,12 @@ public class Engine {
         injector.getControllerResources().setColorClear(colorClear);
     }
 
-    public void create() {
-        injector.getControllerResources().init();
-        injector.getControllerCamera().load();
+    public void load() {
+        injector.load();
+    }
+
+    public void dispose() {
+        injector.dispose();
     }
 
     private void input() {
@@ -39,8 +48,8 @@ public class Engine {
         injector.getControllerResources().clearColor(Gdx.gl);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        if (ControllerMain.IS_DEBUG)
-            DebugDraw.getInstance().drawStart(injector.getControllerCamera().getCameraProjection());
+        if (injector.getDebugDraw().isDebug())
+            injector.getDebugDraw().drawStart(injector.getControllerCamera().getCameraProjection());
 
         injector.getControllerResources().drawBegin(injector.getControllerCamera().getCameraProjection());
 
@@ -50,17 +59,13 @@ public class Engine {
 
         injector.getControllerResources().drawEnd();
 
-        if (ControllerMain.IS_DEBUG) DebugDraw.getInstance().drawEnd();
+        if (injector.getDebugDraw().isDebug()) injector.getDebugDraw().drawEnd();
     }
 
     private void update(float delta) {
         IScreen screen = injector.getNavigator().getCurrentScreen();
         if (screen == null) return;
         screen.update();
-    }
-
-    public void dispose() {
-        injector.getControllerResources().dispose();
     }
 
     public void render() {

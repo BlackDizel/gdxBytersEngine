@@ -22,9 +22,9 @@ public class InputHelper {
 
         if (refControllerCamera == null || refControllerCamera.get() == null) return false;
 
-        float xPoint = Gdx.input.getX() / (Gdx.graphics.getWidth() / (float) refControllerCamera.get().getCameraWidth());
+        float xPoint = Gdx.input.getX() / (Gdx.graphics.getWidth() / refControllerCamera.get().getCameraWidth());
         float yPoint = (Gdx.graphics.getHeight() - Gdx.input.getY())
-                / (Gdx.graphics.getHeight() / (float) refControllerCamera.get().getCameraHeight());
+                / (Gdx.graphics.getHeight() / refControllerCamera.get().getCameraHeight());
 
         return x < xPoint
                 && xPoint < x + width

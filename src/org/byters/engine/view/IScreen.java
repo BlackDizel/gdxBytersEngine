@@ -1,7 +1,5 @@
 package org.byters.engine.view;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-
 public interface IScreen {
 
     void draw();

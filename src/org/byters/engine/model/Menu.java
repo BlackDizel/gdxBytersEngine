@@ -1,7 +1,5 @@
 package org.byters.engine.model;
 
-import org.byters.engine.controller.ControllerJsonBase;
-
 public class Menu {
 
     public static final int NO_VALUE = -1;
@@ -82,8 +80,8 @@ public class Menu {
         return currentMenu != null && currentMenu.getId() != 0;
     }
 
-    public void load(String filename) {
-        data = ControllerJsonBase.getInstance().readFile(MenuData.class, filename);
+    public void load(MenuData menuData) {
+        data = menuData;
         currentMenu = data;
         currentIndex = 0;
         isShown = false;

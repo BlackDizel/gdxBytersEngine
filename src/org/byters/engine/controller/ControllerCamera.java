@@ -10,13 +10,20 @@ public class ControllerCamera {
 
     private OrthographicCamera camera;
     private Vector3 originPosition;
-
+    private float zoom;
 
     public void load() {
+        zoom = 1;
         camera = new OrthographicCamera();
-        camera.zoom = getCameraHeight() / (float) Gdx.graphics.getHeight();
+        camera.zoom = zoom;
         camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         this.originPosition = camera.position.cpy();
+    }
+
+    public void setZoom(float zoom) {
+        if (zoom <= 0) return;
+        this.zoom = zoom;
+        camera.update();
     }
 
     public Matrix4 getCameraProjection() {
@@ -54,12 +61,12 @@ public class ControllerCamera {
         map.setView(camera);
     }
 
-    public int getCameraWidth() {
-        return 192;
+    public float getCameraWidth() {
+        return Gdx.graphics.getWidth() / zoom;
     }
 
-    public int getCameraHeight() {
-        return 108;
+    public float getCameraHeight() {
+        return Gdx.graphics.getHeight() / zoom;
     }
 }
 
