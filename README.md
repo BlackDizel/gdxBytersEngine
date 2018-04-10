@@ -5,9 +5,9 @@ Simple game engine for libgdx
 ## Features
 - screens navigation
 - dialog system
-- menus
+- menu
 - camera
-## Installation (v0.1)
+## Installation
 1. Download [libgdx installer app](https://libgdx.badlogicgames.com/download.html)
 2. Create project
 
@@ -19,7 +19,7 @@ repositories {
 	maven { url "https://jitpack.io" }
 	}
 dependencies {
-	compile 'com.github.BlackDizel:gdxBytersEngine:0.4'
+	compile 'com.github.BlackDizel:gdxBytersEngine:0.6'
 }
 ```  
 4. Run gradle sync _(in IdeaJ 2016.3 right gradle panel, sync button)_.
@@ -32,20 +32,10 @@ public class Core extends ApplicationAdapter {
 	@Override
 	public void create () {
 		engine = new Engine();
-        	engine.create(new ScreenGame());
+        	engine.load();
+        	engine.getInjector().getNavigator().navigateScreen(new ScreenMain()); //ScreenMain implements IScreen interface
 		setColorClear();
 	}
-
-
-	private void setColorClear() {
-		Color colorClear = new Color();
-		colorClear.r = 0.1f;
-		colorClear.g = 0.1f;
-		colorClear.b = 0.1f;
-		colorClear.a = 1f;
-		engine.setColorClear(colorClear);
-	}
-
 
 	@Override
 	public void render () {
