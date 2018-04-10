@@ -65,11 +65,11 @@ public class Engine {
     private void update(float delta) {
         IScreen screen = injector.getNavigator().getCurrentScreen();
         if (screen == null) return;
-        screen.update();
+        screen.update(delta);
     }
 
     public void render() {
-        float delta = Gdx.graphics.getDeltaTime();
+        float delta = Gdx.graphics.getRawDeltaTime();
         update(delta);
         input();
         draw();

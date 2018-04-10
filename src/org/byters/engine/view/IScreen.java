@@ -6,7 +6,7 @@ public interface IScreen {
 
     void load();
 
-    void update();
+    void update(float delta);
 
     void input();
 
