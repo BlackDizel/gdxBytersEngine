@@ -10,19 +10,16 @@ public class ControllerCamera {
 
     private OrthographicCamera camera;
     private Vector3 originPosition;
-    private float zoom;
 
     public void load() {
-        zoom = 1;
         camera = new OrthographicCamera();
-        camera.zoom = zoom;
         camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         this.originPosition = camera.position.cpy();
     }
 
     public void setZoom(float zoom) {
         if (zoom <= 0) return;
-        this.zoom = zoom;
+        camera.zoom = zoom;
         camera.update();
     }
 
@@ -62,11 +59,11 @@ public class ControllerCamera {
     }
 
     public float getCameraWidth() {
-        return Gdx.graphics.getWidth() / zoom;
+        return Gdx.graphics.getWidth() / camera.zoom;
     }
 
     public float getCameraHeight() {
-        return Gdx.graphics.getHeight() / zoom;
+        return Gdx.graphics.getHeight() / camera.zoom;
     }
 }
 
