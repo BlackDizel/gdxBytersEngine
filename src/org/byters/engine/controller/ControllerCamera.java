@@ -20,6 +20,7 @@ public class ControllerCamera {
     public void setZoom(float zoom) {
         if (zoom <= 0) return;
         camera.zoom = zoom;
+        originPosition.scl(zoom);
         camera.update();
     }
 
