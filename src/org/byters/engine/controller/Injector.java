@@ -14,6 +14,7 @@ public class Injector {
     private Random random;
     private InputHelper inputHelper;
     private DebugDraw debugDraw;
+    private ControllerJsonBase controllerJsonBase;
 
     public void dispose() {
         getDebugDraw().dispose();
@@ -22,7 +23,7 @@ public class Injector {
 
     public void load() {
         getDebugDraw().load();
-        getControllerResources().init();
+        getControllerResources().load();
         getControllerCamera().load();
     }
 
@@ -54,5 +55,11 @@ public class Injector {
     public DebugDraw getDebugDraw() {
         if (debugDraw == null) debugDraw = new DebugDraw();
         return debugDraw;
+    }
+
+    public ControllerJsonBase getControllerJsonBase() {
+        if (controllerJsonBase == null)
+            controllerJsonBase = new ControllerJsonBase();
+        return controllerJsonBase;
     }
 }
