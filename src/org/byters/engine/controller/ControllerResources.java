@@ -8,19 +8,23 @@ import org.byters.engine.view.IScreen;
 
 public class ControllerResources {
 
-    private long gameTimeStart;
+    private long gameTimeStartMillis;
     private SpriteBatch batch;
     private Color colorClear;
 
     public void load() {
         batch = new SpriteBatch();
-        gameTimeStart = System.currentTimeMillis();
+        gameTimeStartMillis = System.currentTimeMillis();
 
         colorClear = new Color();
         colorClear.r = 0;
         colorClear.g = 0;
         colorClear.b = 1;
         colorClear.a = 1;
+    }
+
+    public long getGameTimeStartMillis() {
+        return gameTimeStartMillis;
     }
 
     public void dispose() {
