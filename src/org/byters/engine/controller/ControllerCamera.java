@@ -60,11 +60,11 @@ public class ControllerCamera {
     }
 
     public float getCameraWidth() {
-        return Gdx.graphics.getWidth() / camera.zoom;
+        return Gdx.graphics.getWidth() * camera.zoom;
     }
 
     public float getCameraHeight() {
-        return Gdx.graphics.getHeight() / camera.zoom;
+        return Gdx.graphics.getHeight() * camera.zoom;
     }
 }
 
