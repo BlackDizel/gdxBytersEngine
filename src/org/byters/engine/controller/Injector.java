@@ -14,7 +14,7 @@ public class Injector {
     private Random random;
     private InputHelper inputHelper;
     private DebugDraw debugDraw;
-    private ControllerJsonBase controllerJsonBase;
+    private ControllerSerialize controllerSerialize;
 
     public void dispose() {
         getDebugDraw().dispose();
@@ -57,9 +57,9 @@ public class Injector {
         return debugDraw;
     }
 
-    public ControllerJsonBase getControllerJsonBase() {
-        if (controllerJsonBase == null)
-            controllerJsonBase = new ControllerJsonBase();
-        return controllerJsonBase;
+    public ControllerSerialize getControllerSerialize() {
+        if (controllerSerialize == null)
+            controllerSerialize = new ControllerSerialize();
+        return controllerSerialize;
     }
 }
