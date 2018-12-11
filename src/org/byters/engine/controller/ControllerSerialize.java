@@ -1,6 +1,7 @@
 package org.byters.engine.controller;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.utils.GdxRuntimeException;
 import com.badlogic.gdx.utils.Json;
 
 public class ControllerSerialize {
@@ -25,11 +26,17 @@ public class ControllerSerialize {
     }
 
     public <T> T readFileLocal(Class<T> type, String filename) {
-        String json = Gdx.files.local(filename).readString();
+
+        String json = null;
+        try {
+            json = Gdx.files.local(filename).readString();
+        } catch (GdxRuntimeException e) {
+            return null;
+        }
         return getJson().fromJson(type, json);
     }
 
-    public void writeData(Object obj, String file) {
+    public void writeDataLocal(Object obj, String file) {
         Gdx.files.local(file).writeString(toString(obj), false);
     }
 }
