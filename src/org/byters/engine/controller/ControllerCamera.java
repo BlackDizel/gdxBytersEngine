@@ -66,5 +66,9 @@ public class ControllerCamera {
     public float getCameraHeight() {
         return Gdx.graphics.getHeight() * camera.zoom;
     }
+
+    public OrthographicCamera getCamera() {
+        return camera;
+    }
 }
 
